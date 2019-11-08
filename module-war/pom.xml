@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>br.example</groupId>
+    <artifactId>maven-multi-module</artifactId>
+    <version>${global.version}</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+  <groupId>br.example</groupId>
+  <artifactId>module-war</artifactId>
+  <version>${global.version}</version>
+  <packaging>war</packaging>
+  <name>module-war Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+
+  <dependencies>
+      <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-web</artifactId>
+      </dependency>
+
+      <!-- Package jar in the war file -->
+      <dependency>
+          <groupId>br.example</groupId>
+          <artifactId>module-jar</artifactId>
+          <version>${global.version}</version>
+      </dependency>
+
+  </dependencies>
+  <build>
+    <finalName>module-war</finalName>
+  </build>
+</project>

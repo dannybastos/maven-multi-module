@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>br.example</groupId>
+    <artifactId>maven-multi-module</artifactId>
+    <version>${global.version}</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+  <groupId>br.example</groupId>
+  <artifactId>module-ear</artifactId>
+  <version>${global.version}</version>
+  <packaging>ear</packaging>
+  <name>module-ear</name>
+  <url>http://maven.apache.org</url>
+
+
+  <dependencies>
+      <!-- Package war in the ear file -->
+      <dependency>
+          <groupId>br.example</groupId>
+          <artifactId>module-war</artifactId>
+          <version>${global.version}</version>
+          <type>war</type>
+      </dependency>
+  </dependencies>
+
+    <!-- Plugin to bundle the ear file-->
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-ear-plugin</artifactId>
+                    <version>3.0.1</version>
+                    <configuration>
+                        <finalName>maven-multi-module-${project.version}</finalName>
+                        <modules>
+                            <webModule>
+                                <groupId>br.example</groupId>
+                                <artifactId>module-war</artifactId>
+                                <uri>module-war-${global.version}.war</uri>
+                                <!-- Set custom context root -->
+                                <contextRoot>/application</contextRoot>
+                            </webModule>
+                        </modules>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>
