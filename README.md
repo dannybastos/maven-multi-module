@@ -32,6 +32,11 @@ Create the **ear** module
 -DarchetypeArtifactId=maven-archetype-quickstart \
 -DinteractiveMode=false
 ```
+Change the packing to **ear**
+
+```
+<packaging>ear</packaging>
+```
 
 Create the **web** module
 ```
